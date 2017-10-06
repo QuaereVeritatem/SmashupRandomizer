@@ -44,7 +44,7 @@ class FactionAssignedViewController: UIViewController, UITableViewDelegate, UITa
         }
         */
       
-      //next line shold work but instead causes app to crash
+      //next line should work but instead causes app to crash
       //tableView.reloadData()
     }
     
