@@ -23,11 +23,29 @@ class FactionAssignedViewController: UIViewController, UITableViewDelegate, UITa
     var factionArrayNums: [Int] = []
     
     var nameCounter: Int = 0
-    
+  
+    var randomFSet = Set<String>()
+  
+    var randArray: [String] = []
+  
+    var rE = RandomElement()
+  
     @IBOutlet weak var tableView: UITableView!
     
     //this will refresh screen and choose all new factions for each player
     @IBAction func rechooseFactionBtn(_ sender: UIButton) {
+      //performSegue(withIdentifier: "factionAssignedSegue", sender: PassableInfo())
+      
+      /*
+        //reload tableview
+        func reloadData() {
+            //doesnnt work yet 
+           // tableView.beginUpdates()
+        }
+        */
+      
+      //next line shold work but instead causes app to crash
+      //tableView.reloadData()
     }
     
     //this will go back to home page, reset passable info vars and user will rechoose all settings/players
@@ -45,7 +63,7 @@ class FactionAssignedViewController: UIViewController, UITableViewDelegate, UITa
         
         
         //segue back home
-        performSegue(withIdentifier: "unwindSegueToVC1", sender: PassableInfo())
+        performSegue(withIdentifier: "assignedToHome", sender: PassableInfo())  
     }
     
     
@@ -56,20 +74,10 @@ class FactionAssignedViewController: UIViewController, UITableViewDelegate, UITa
 
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        //this will loop and create 2 random numbers for EVERY PLAYER
-        for i in 0...(loopTimesTwo-1) {
-            
-            possibleRanNum1 = Int(randomNumber())
-            print("possibleRanNum1 is \(possibleRanNum1)")
-            factionArrayNums.append(possibleRanNum1)
-            
-            //use one of these two arrays to check against
-            //prevNumArray.append(Int(previousNumber!))
-            //Factions.sharedInstance.noRepeatNumbers.append(Int(randomNumber))
-        }
+      super.viewDidLoad()
+      // this will save the random factions generated from Random Element to randArray
+      randArray = rE.randomFactions(playerNum: PassableInfo.sharedInstance.chosenPlayerNumber)
+      
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,17 +117,18 @@ class FactionAssignedViewController: UIViewController, UITableViewDelegate, UITa
         
         //5 things to output on each half of each cell!! (This should be a loop...but loop can only do 1 cell at a time!)
         
+        //use randomFSet as list to print/display from [DELETE WHEN DONE]
         cell.player1.text = PassableInfo.sharedInstance.playersPlayingArray[nameCounter]
         
         nameCounter = nameCounter + 1
         
-        cell.player1Faction1?.text = Factions.sharedInstance.factionListArray[factionArrayNums[arrayNum]]
+        cell.player1Faction1?.text = randArray[arrayNum]
 
         cell.player1FactionImage1?.image = UIImage.init(named: (cell.player1Faction1?.text)!)
         
         arrayNum = arrayNum + 1
         
-        cell.player1Faction2?.text = Factions.sharedInstance.factionListArray[factionArrayNums[arrayNum]]
+        cell.player1Faction2?.text = randArray[arrayNum]
         
         cell.player1FactionImage2?.image = UIImage.init(named: (cell.player1Faction2?.text)!)
         
@@ -132,13 +141,13 @@ class FactionAssignedViewController: UIViewController, UITableViewDelegate, UITa
             
             nameCounter = nameCounter + 1
             
-            cell.player2Faction1?.text = Factions.sharedInstance.factionListArray[factionArrayNums[arrayNum]]
+            cell.player2Faction1?.text = randArray[arrayNum]
             
             cell.player2FactionImage1?.image = UIImage.init(named: (cell.player2Faction1?.text)!)
             
             arrayNum = arrayNum + 1
             
-            cell.player2Faction2?.text = Factions.sharedInstance.factionListArray[factionArrayNums[arrayNum]]
+            cell.player2Faction2?.text = randArray[arrayNum]
             
             cell.player2FactionImage2?.image = UIImage.init(named: (cell.player2Faction2?.text)!)
 
@@ -155,34 +164,40 @@ class FactionAssignedViewController: UIViewController, UITableViewDelegate, UITa
     func randomNumber() -> UInt32 {
         
         //1st generate a random number
-        var randomNumber = arc4random_uniform(UInt32(Factions.sharedInstance.factionListArray.count))
+        var randomNumberX = arc4random_uniform(UInt32(Factions.sharedInstance.factionListArray.count))
         
         //if array already has at least one number, we must check to see if new number is a repeat
         if prevNumArray.count > 1 {
             for numCount in 0...prevNumArray.count - 1 {
                 
                 //if its the 2nd number or greater, check it against an array that stores all other numbers(loop)
-                while prevNumArray[numCount] == Int(randomNumber) {
+                while prevNumArray[numCount] == Int(randomNumberX) {
                     //2b if number is repeat, re-generate a random number again(then re-test it)
-                    randomNumber = arc4random_uniform(UInt32(Factions.sharedInstance.factionListArray.count))
+                    randomNumberX = arc4random_uniform(UInt32(Factions.sharedInstance.factionListArray.count))
                 }
             }
             //this will be the end of if loop (for loop will end before this
         } else {
-            while previousNumber == randomNumber {
+            while previousNumber == randomNumberX {
                 //2b if number is repeat, re-generate a random number again(then re-test it)
-                randomNumber = arc4random_uniform(UInt32(Factions.sharedInstance.factionListArray.count))
+                randomNumberX = arc4random_uniform(UInt32(Factions.sharedInstance.factionListArray.count))
             }
         }
-        previousNumber = randomNumber
+        previousNumber = randomNumberX
         
         //2c if not a repeat add it to the storage array and return number (or add it to array outside of function?)
         prevNumArray.append(Int(previousNumber!))
-        Factions.sharedInstance.noRepeatNumbers.append(Int(randomNumber))
-        return randomNumber
+        Factions.sharedInstance.noRepeatNumbers.append(Int(randomNumberX))
+        return randomNumberX
     }
     
-    
+  func loadData() {
+    // code to load data
+  }
+  
+  
+  
+  
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -193,3 +208,17 @@ class FactionAssignedViewController: UIViewController, UITableViewDelegate, UITa
     
 
 }
+/*
+extension UITableView {
+  func refreshTable() {
+    let indexPathForSection = NSIndexSet(
+  }
+}
+*/
+
+
+
+
+
+
+

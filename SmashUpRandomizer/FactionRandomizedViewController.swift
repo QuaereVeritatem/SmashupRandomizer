@@ -15,7 +15,13 @@ class FactionRandomizedViewController: UIViewController, UITableViewDataSource, 
     var cellCount = 0
     
     var prevNumArray: [Int] = []
-    
+  
+    var randomFSet = Set<String>()
+  
+    var randArray: [String] = []
+  
+    var rE = RandomElement()
+  
     //this is twice the number of players..represents number of factions
     var loopTimesTwo = PassableInfo.sharedInstance.chosenPlayerNumber * 2
     
@@ -46,6 +52,8 @@ class FactionRandomizedViewController: UIViewController, UITableViewDataSource, 
     
     //this wil refresh screen and choose new factions for same players
     @IBAction func rechooseFactionBtn(_ sender: UIButton) {
+      //next line shold work but instead causes app to crash
+      //tableView.reloadData()
     }
     
     //this will go back to home page, reset passable info vars and user will rechoose all settings/players
@@ -64,21 +72,8 @@ class FactionRandomizedViewController: UIViewController, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        //use player # to assign set number of random factions(dont forget to check for repeaters)
-        
-        //this will loop and create 2 random numbers for EVERY PLAYER
-        for i in 0...(loopTimesTwo-1) {
-            
-            possibleRanNum1 = Int(randomNumber())
-            print("possibleRanNum1 is \(possibleRanNum1)")
-            factionArrayNums.append(possibleRanNum1)
-            
-            //use one of these two arrays to check against
-            //prevNumArray.append(Int(previousNumber!))
-            //Factions.sharedInstance.noRepeatNumbers.append(Int(randomNumber))
-        } 
+        // this will save the random factions generated from Random Element to randArray
+        randArray = rE.randomFactions(playerNum: PassableInfo.sharedInstance.chosenPlayerNumber)
  
     }
 
@@ -112,25 +107,25 @@ class FactionRandomizedViewController: UIViewController, UITableViewDataSource, 
         // Find out what index or row we're building for and use that to fetch the corresponding data.
         let row = (indexPath as NSIndexPath).row
         
-        
-        //check to see if past chosen factions is nil and if factionArrayNums is nil...if not nil then check any generated numbers to see if they repeat...if # is nil automatically add as a random number (or check .count size)
-        //PassableInfo.sharedInstance.pastChosenFactions.append(Factions.sharedInstance.factionListArray[checkForRepeats(tempNum: Factions.sharedInstance.factionListArray.random().raw)])
-        
-        cell.factionLabel1?.text = Factions.sharedInstance.factionListArray[factionArrayNums[cellCount]]
+        cell.factionLabel1?.text = randArray[cellCount]
         cell.factionImage1?.image = UIImage.init(named: (cell.factionLabel1?.text)!)
         
-        print ("The \(cellCount) element/label is \(Factions.sharedInstance.factionListArray[factionArrayNums[cellCount]]) ")
-        cellCount = cellCount + 1
-            
-        cell.factionLabel2?.text = Factions.sharedInstance.factionListArray[factionArrayNums[cellCount]]
+        print ("The \(cellCount) element/label is \(randArray[cellCount]) ")
+        if cellCount < randArray.count {
+          cellCount = cellCount + 1
+        }
+        cell.factionLabel2?.text = randArray[cellCount]
 
         cell.factionImage2?.image = UIImage.init(named: (cell.factionLabel2?.text)!)
-        print ("The next or \(cellCount) element/label is \(Factions.sharedInstance.factionListArray[factionArrayNums[cellCount]]) ")
-        cellCount = cellCount + 1
+        print ("The next or \(cellCount) element/label is \(randArray[cellCount]) ")
+        if cellCount < randArray.count {
+          cellCount = cellCount + 1
+        }
         // Finally, return the cell so it can be placed into the table view.
         return cell
     }
-    
+  
+  //dont need this anymore since we implemented sets
     func checkForRepeats(tempNum:Int) -> Int {
         var numberBad: Bool = false
         

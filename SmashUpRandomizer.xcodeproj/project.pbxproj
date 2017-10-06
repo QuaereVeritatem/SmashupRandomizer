@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		379A5B881F149470005BDBBF /* space age.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 379A5B871F149470005BDBBF /* space age.ttf */; };
+		371B721E1F3D4E3100542163 /* space age.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 371B721D1F3D4E3100542163 /* space age.ttf */; };
 		37F1ED3E1EF742E80049AB8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F1ED3D1EF742E80049AB8E /* AppDelegate.swift */; };
 		37F1ED401EF742E80049AB8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F1ED3F1EF742E80049AB8E /* ViewController.swift */; };
 		37F1ED431EF742E80049AB8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F1ED411EF742E80049AB8E /* Main.storyboard */; };
@@ -46,7 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		379A5B871F149470005BDBBF /* space age.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "space age.ttf"; path = "../../../../DesignsOrArt/DesigningApps/FONTS/space_age/space age.ttf"; sourceTree = "<group>"; };
+		371B721D1F3D4E3100542163 /* space age.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "space age.ttf"; path = "../../../../../DesignsOrArt/DesigningApps/FONTS/space_age/space age.ttf"; sourceTree = "<group>"; };
 		37F1ED3A1EF742E80049AB8E /* SmashUpRandomizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmashUpRandomizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F1ED3D1EF742E80049AB8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37F1ED3F1EF742E80049AB8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		37F1ED3C1EF742E80049AB8E /* SmashUpRandomizer */ = {
 			isa = PBXGroup;
 			children = (
-				379A5B871F149470005BDBBF /* space age.ttf */,
+				371B721D1F3D4E3100542163 /* space age.ttf */,
 				37F1ED7A1EFB302F0049AB8E /* FactionAssigned */,
 				37F1ED791EFB30210049AB8E /* FactionRandomized */,
 				37F1ED781EFB30170049AB8E /* CountDown */,
@@ -297,7 +297,7 @@
 			files = (
 				37F1ED4B1EF742E80049AB8E /* LaunchScreen.storyboard in Resources */,
 				37F1ED481EF742E80049AB8E /* Assets.xcassets in Resources */,
-				379A5B881F149470005BDBBF /* space age.ttf in Resources */,
+				371B721E1F3D4E3100542163 /* space age.ttf in Resources */,
 				37F1ED431EF742E80049AB8E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

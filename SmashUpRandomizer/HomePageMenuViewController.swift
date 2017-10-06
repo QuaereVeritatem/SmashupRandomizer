@@ -6,7 +6,11 @@
 //  Copyright © 2017 Robert Martin. All rights reserved.
 //
 
-//no factions assigned view controller is correctly displaying choose boxes on first screen...assign factions is bugged
+// will crash when you pull down to manually reuse/refresh cells [NEED TO FIX]
+// crash when you choose "re-choose factions" [NEED TO FIX]
+// program last feature of "no repeat factions today"
+// sounds depending on who you choose
+// program Ross as a player
 
 import UIKit
 

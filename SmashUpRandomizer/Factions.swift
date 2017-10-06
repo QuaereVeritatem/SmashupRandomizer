@@ -26,7 +26,8 @@ class Factions {
         "Princesses", "Dwarves", "Elves", "Clerics",
         "Halflings", "Mages", "Orcs", "Thieves", "Warriors", "Dragons",
         "Mythic Greeks", "Sharks", "Superheroes", "Tornados", "AstroKnights",
-        "Star Roamers", "Changer Bots", "IgNobles", "Explorers", "Grannies", "Rock Stars", "Teddy Bears", "All Stars"]
+        "Star Roamers", "Changer Bots", "IgNobles", "Explorers", "Grannies", "Rock Stars", "Teddy Bears", "All Stars",
+        "Magical Girls", "Mega Troopers", "Itty Critters", "Kaiju"]
     
 
     }
