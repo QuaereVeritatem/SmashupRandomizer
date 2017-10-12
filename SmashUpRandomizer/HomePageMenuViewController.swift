@@ -8,9 +8,10 @@
 
 // will crash when you pull down to manually reuse/refresh cells [NEED TO FIX]
 // crash when you choose "re-choose factions" [NEED TO FIX]
-// program last feature of "no repeat factions today"
+// need to program last feature of "no repeat factions today"
 // sounds depending on who you choose
 // program Ross as a player
+// clean codify, including changing repeating code within buttons to functions
 
 import UIKit
 

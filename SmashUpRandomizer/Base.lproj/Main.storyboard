@@ -60,7 +60,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alexander" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeq-Np-0fr">
-                                <rect key="frame" x="60" y="210" width="142.5" height="17"/>
+                                <rect key="frame" x="60" y="210" width="81" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="7gX-na-q8i"/>
                                 </constraints>
